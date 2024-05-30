@@ -1,0 +1,154 @@
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Action": [
+				"s3:Get*",
+				"s3:List*",
+				"s3:Put*",
+				"s3-object-lambda:Get*",
+				"s3-object-lambda:List*",
+				"s3-object-lambda:Put*"
+			],
+			"Effect": "Allow",
+			"Resource": "*",
+			"Sid": "AllowS3ReadAccess"
+		},
+		{
+			"Action": [
+				"dynamodb:Query",
+				"dynamodb:GetItem",
+				"dynamodb:PutItem",
+				"dynamodb:Scan",
+				"dynamodb:DeleteItem"
+			],
+			"Effect": "Allow",
+			"Resource": [
+				"arn:aws:dynamodb:*:912372019075:table/dev-features-*",
+				"arn:aws:dynamodb:*:912372019075:table/*-server-release",
+				"arn:aws:dynamodb:*:912372019075:table/tf-infra-state-lock-*"
+			]
+		},
+		{
+			"Action": [
+				"secretsmanager:GetSecretValue",
+				"secretsmanager:DescribeSecret",
+				"secretsmanager:GetResourcePolicy"
+			],
+			"Effect": "Allow",
+			"Resource": [
+				"arn:aws:secretsmanager:*:912372019075:secret:dev/backend/uncalledkey-2-*",
+				"arn:aws:secretsmanager:*:912372019075:secret:dev/backend/auth_server/misc-*",
+				"arn:aws:secretsmanager:*:912372019075:secret:dev/backend/db_interface/misc-*",
+				"arn:aws:secretsmanager:*:912372019075:secret:dev/gitlab/delivery/apitoken-*"
+			]
+		},
+		{
+			"Action": [
+				"ecr:*"
+			],
+			"Effect": "Allow",
+			"Resource": [
+				"*"
+			]
+		},
+		{
+			"Action": [
+				"ssm:DescribeAssociation",
+				"ssm:GetDeployablePatchSnapshotForInstance",
+				"ssm:GetDocument",
+				"ssm:DescribeDocument",
+				"ssm:GetManifest",
+				"ssm:GetParameter",
+				"ssm:GetParameters",
+				"ssm:ListAssociations",
+				"ssm:ListInstanceAssociations",
+				"ssm:PutInventory",
+				"ssm:PutComplianceItems",
+				"ssm:PutConfigurePackageResult",
+				"ssm:UpdateAssociationStatus",
+				"ssm:UpdateInstanceAssociationStatus",
+				"ssm:UpdateInstanceInformation"
+			],
+			"Effect": "Allow",
+			"Resource": "*"
+		},
+		{
+			"Action": [
+				"ssmmessages:CreateControlChannel",
+				"ssmmessages:CreateDataChannel",
+				"ssmmessages:OpenControlChannel",
+				"ssmmessages:OpenDataChannel"
+			],
+			"Effect": "Allow",
+			"Resource": "*"
+		},
+		{
+			"Action": [
+				"ec2messages:AcknowledgeMessage",
+				"ec2messages:DeleteMessage",
+				"ec2messages:FailMessage",
+				"ec2messages:GetEndpoint",
+				"ec2messages:GetMessages",
+				"ec2messages:SendReply"
+			],
+			"Effect": "Allow",
+			"Resource": "*"
+		},
+		{
+			"Action": [
+				"route53:ListTagsForResource",
+				"route53:ListHostedZones",
+				"route53:GetHostedZone",
+				"route53:ListResourceRecordSets"
+			],
+			"Effect": "Allow",
+			"Resource": "*"
+		},
+        {
+			"Action": [
+				"elasticloadbalancing:DescribeLoadBalancers",
+				"elasticloadbalancing:DescribeLoadBalancerAttributes",
+				"elasticloadbalancing:DescribeTargetGroups",
+				"elasticloadbalancing:DescribeTargetGroupAttributes",
+				"elasticloadbalancing:DescribeTags",
+				"elasticloadbalancing:DescribeListeners",
+				"elasticloadbalancing:ModifyTargetGroup"
+			],
+			"Effect": "Allow",
+			"Resource": "*"
+		},
+        {
+			"Action": [
+				"ecs:DescribeClusters",
+				"ecs:DescribeTaskDefinition",
+				"ecs:UpdateService",
+				"ecs:DescribeServices",
+				"ecs:RegisterTaskDefinition",
+				"ecs:DeregisterTaskDefinition",
+				"ecs:ListTagsForResource",
+				"ecs:TagResource",
+				"ecs:DeleteService",
+				"ecs:CreateService"
+			],
+			"Effect": "Allow",
+			"Resource": "*"
+		},
+        {
+			"Action": [
+				"servicediscovery:GetNamespace",
+				"servicediscovery:GetService",
+				"servicediscovery:ListTagsForResource"
+			],
+			"Effect": "Allow",
+			"Resource": "*"
+		},
+        {
+			"Action": [
+				"iam:PassRole"
+			],
+			"Effect": "Allow",
+			"Resource": "*"
+		}
+	]
+}

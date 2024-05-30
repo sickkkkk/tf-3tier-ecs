@@ -1,0 +1,23 @@
+{
+	"Statement": [
+		{
+			"Action": [
+				"ecr:GetAuthorizationToken",
+				"ecr:BatchCheckLayerAvailability",
+				"ecr:GetDownloadUrlForLayer",
+				"ecr:BatchGetImage",
+				"logs:CreateLogStream",
+				"logs:PutLogEvents",
+				"s3:Get*",
+				"s3:List*",
+				"s3:Describe*",
+				"s3-object-lambda:Get*",
+				"s3-object-lambda:List*",
+				"secretsmanager:*"
+			],
+			"Effect": "Allow",
+			"Resource": "*"
+		}
+	],
+	"Version": "2012-10-17"
+}

@@ -1,0 +1,31 @@
+{
+    "Statement": [
+        {
+            "Action": [
+                "s3:Get*",
+                "s3:List*",
+                "s3-object-lambda:Get*",
+                "s3-object-lambda:List*"
+            ],
+            "Effect": "Allow",
+            "Resource": "*",
+            "Sid": "AllowS3ReadAccess"
+        },
+        {
+            "Action": [
+                "dynamodb:Query",
+                "dynamodb:GetItem",
+                "dynamodb:PutItem",
+                "dynamodb:Scan"
+            ],
+            "Effect": "Allow",
+            "Resource": "arn:aws:dynamodb:*:345116575440:table/*-server-release"
+        },
+        {
+            "Action": "ec2:AssociateAddress",
+            "Effect": "Allow",
+            "Resource": "*"
+        }
+    ],
+    "Version": "2012-10-17"
+}
